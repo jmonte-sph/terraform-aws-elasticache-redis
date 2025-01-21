@@ -56,7 +56,8 @@ resource "aws_elasticache_replication_group" "this" {
   subnet_group_name    = try(aws_elasticache_subnet_group.this[0].name, var.subnet_group_name)
   security_group_ids   = var.security_groups
 
-  multi_az_enabled           = var.replication_enabled ? true : false
+  multi_az_enabled = var.replication_enabled ? true : false
+
   at_rest_encryption_enabled = var.at_rest_encryption_enabled
   transit_encryption_enabled = var.transit_encryption_enabled
   automatic_failover_enabled = var.replication_enabled ? true : false
